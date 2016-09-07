@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset=utf-8>
+		<title>Color Sudoku</title>
+		<style>
+			body { background-color: white; }
+			table{
+			margin: auto;
+			}
+			.cell{
+			border-style: solid;
+			border-color: black;
+			}
+			.blue{background-color: blue;}
+		</style>
+		<script src="jquery-3.1.0.js"></script>
+	</head>
+	<body>
+		<script>
+			var row1 = [2,9,5,7,4,3,8,6,1];
+			var row2 = [4,3,1,8,6,5,9,2,7];
+			var row3 = [8,7,6,1,9,2,5,4,3];
+			var row4 = [3,8,7,4,5,9,2,1,6];
+			var row5 = [6,1,2,3,8,7,4,9,5];
+			var row6 = [5,4,9,2,1,6,7,3,8];
+			var row7 = [7,6,3,5,3,4,1,8,9];
+			var row8 = [9,2,8,6,7,1,3,5,4];
+			var row9 = [1,5,4,9,3,8,6,7,2];
+			var matrix = [row1,row2,row3,row4,row5,row6,row7,row8,row9];
+			
+			//matrix operations
+			function randomRowSwap(){
+				n = floor(Math.random()*9);
+				m = floor(Math.random()*9);
+				hold = matrix[n].splice();
+				
+				matrix[n] = matrix[m].splice();
+			}
+			function randomColumnSwap(){
+				n = floor(Math.random()*9);
+				m = floor(Math.random()*9);
+				hold = 0;
+				
+				for(i=0;i<9;i++)
+				{
+					hold = matrix[i][n];
+					matrix[i][n] = matrix[i][m];
+					matrix[i][m] = hold;
+				}
+			}
+			
+			function populateBoard()
+			{
+				var cell = "";
+				for(i=0;i<9;i++)
+				{
+					for(j=0;j<9;j++)
+					{
+						cell = "#"+(i+1).toString()+"-"+(j+1).toString();
+						console.log(cell+":"+matrix[i][j]);
+						$(cell).html(matrix[i][j]);
+					}
+				}
+			}
+			$(document).ready(function(){populateBoard();});
+		</script>
+		
+		<table>
+		<tr>
+			<td></td>
+			<td id="col1"></td>
+			<td id="col2"></td>
+			<td id="col3"></td>
+			<td id="col4"></td>
+			<td id="col5"></td>
+			<td id="col6"></td>
+			<td id="col7"></td>
+			<td id="col8"></td>
+			<td id="col9"></td>
+		</tr>
+		<tr>
+			<td id="row1"></td>
+			<td id="1-1"></td>
+			<td id="1-2"></td>
+			<td id="1-3"></td>
+			<td id="1-4"></td>
+			<td id="1-5"></td>
+			<td id="1-6"></td>
+			<td id="1-7"></td>
+			<td id="1-8"></td>
+			<td id="1-9"></td>
+		</tr>
+		<tr>
+			<td id="row2"></td>
+			<td id="2-1"></td>
+			<td id="2-2"></td>
+			<td id="2-3"></td>
+			<td id="2-4"></td>
+			<td id="2-5"></td>
+			<td id="2-6"></td>
+			<td id="2-7"></td>
+			<td id="2-8"></td>
+			<td id="2-9"></td>
+		</tr>
+		<tr>
+			<td id="row3"></td>
+			<td id="3-1"></td>
+			<td id="3-2"></td>
+			<td id="3-3"></td>
+			<td id="3-4"></td>
+			<td id="3-5"></td>
+			<td id="3-6"></td>
+			<td id="3-7"></td>
+			<td id="3-8"></td>
+			<td id="3-9"></td>
+		</tr>
+		<tr>
+			<td id="row4"></td>
+			<td id="4-1"></td>
+			<td id="4-2"></td>
+			<td id="4-3"></td>
+			<td id="4-4"></td>
+			<td id="4-5"></td>
+			<td id="4-6"></td>
+			<td id="4-7"></td>
+			<td id="4-8"></td>
+			<td id="4-9"></td>
+		</tr>
+		<tr>
+			<td id="row5"></td>
+			<td id="5-1"></td>
+			<td id="5-2"></td>
+			<td id="5-3"></td>
+			<td id="5-4"></td>
+			<td id="5-5"></td>
+			<td id="5-6"></td>
+			<td id="5-7"></td>
+			<td id="5-8"></td>
+			<td id="5-9"></td>
+		</tr>
+		<tr>
+			<td id="row6"></td>
+			<td id="6-1"></td>
+			<td id="6-2"></td>
+			<td id="6-3"></td>
+			<td id="6-4"></td>
+			<td id="6-5"></td>
+			<td id="6-6"></td>
+			<td id="6-7"></td>
+			<td id="6-8"></td>
+			<td id="6-9"></td>
+		</tr>
+		<tr>
+			<td id="row7"></td>
+			<td id="7-1"></td>
+			<td id="7-2"></td>
+			<td id="7-3"></td>
+			<td id="7-4"></td>
+			<td id="7-5"></td>
+			<td id="7-6"></td>
+			<td id="7-7"></td>
+			<td id="7-8"></td>
+			<td id="7-9"></td>
+		</tr>
+		<tr>
+			<td id="row8"></td>
+			<td id="8-1"></td>
+			<td id="8-2"></td>
+			<td id="8-3"></td>
+			<td id="8-4"></td>
+			<td id="8-5"></td>
+			<td id="8-6"></td>
+			<td id="8-7"></td>
+			<td id="8-8"></td>
+			<td id="8-9"></td>
+		</tr>
+		<tr>
+			<td id="row9"></td>
+			<td id="9-9"></td>
+			<td id="9-2"></td>
+			<td id="9-3"></td>
+			<td id="9-4"></td>
+			<td id="9-5"></td>
+			<td id="9-6"></td>
+			<td id="9-7"></td>
+			<td id="9-8"></td>
+			<td id="9-9"></td>
+		</tr>
+		</table>
+		
+	</body>
+</html>
