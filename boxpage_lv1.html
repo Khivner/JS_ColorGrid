@@ -6,66 +6,68 @@
 		<style>
 			body { background-color: white; }
 			table{
+			display: inline;
 			margin: auto;
 			}
-			.cell{
+			td{
 			border-style: solid;
 			border-color: black;
+			height: 20px;
+			width: 20px;
 			}
+			
+			.red{background-color: red;}
 			.blue{background-color: blue;}
+			.green{background-color: green;}
+			.orange{background-color: orange;}
+			.pink{background-color: pink;}
+			.yellow{background-color: yellow;}
+			.cyan{background-color: #00FFFF;}
+			.brown{background-color: saddlebrown;}
+			.purple{background-color: orchid;}
+			
 		</style>
 		<script src="jquery-3.1.0.js"></script>
 	</head>
 	<body>
-		<script>
-			var row1 = [2,9,5,7,4,3,8,6,1];
-			var row2 = [4,3,1,8,6,5,9,2,7];
-			var row3 = [8,7,6,1,9,2,5,4,3];
-			var row4 = [3,8,7,4,5,9,2,1,6];
-			var row5 = [6,1,2,3,8,7,4,9,5];
-			var row6 = [5,4,9,2,1,6,7,3,8];
-			var row7 = [7,6,3,5,3,4,1,8,9];
-			var row8 = [9,2,8,6,7,1,3,5,4];
-			var row9 = [1,5,4,9,3,8,6,7,2];
-			var matrix = [row1,row2,row3,row4,row5,row6,row7,row8,row9];
-			
-			//matrix operations
-			function randomRowSwap(){
-				n = floor(Math.random()*9);
-				m = floor(Math.random()*9);
-				hold = matrix[n].splice();
-				
-				matrix[n] = matrix[m].splice();
-			}
-			function randomColumnSwap(){
-				n = floor(Math.random()*9);
-				m = floor(Math.random()*9);
-				hold = 0;
-				
-				for(i=0;i<9;i++)
-				{
-					hold = matrix[i][n];
-					matrix[i][n] = matrix[i][m];
-					matrix[i][m] = hold;
-				}
-			}
-			
-			function populateBoard()
-			{
-				var cell = "";
-				for(i=0;i<9;i++)
-				{
-					for(j=0;j<9;j++)
-					{
-						cell = "#"+(i+1).toString()+"-"+(j+1).toString();
-						console.log(cell+":"+matrix[i][j]);
-						$(cell).html(matrix[i][j]);
-					}
-				}
-			}
-			$(document).ready(function(){populateBoard();});
-		</script>
-		
+		<table>
+		<tr>
+			<td class="red" onclick="getColor('red')"></td>
+			<td class="label"></td>
+		</tr>
+		<tr>
+			<td class="green" onclick="getColor('green')"></td>
+			<td class="label"></td>
+		</tr>
+		<tr>
+			<td class="blue" onclick="getColor('blue')"></td>
+			<td class="label"></td>
+		</tr>
+		<tr>
+			<td class="cyan" onclick="getColor('cyan')"></td>
+			<td class="label"></td>
+		</tr>
+		<tr>
+			<td class="purple" onclick="getColor('purple')"></td>
+			<td class="label"></td>
+		</tr>
+		<tr>
+			<td class="pink" onclick="getColor('pink')"></td>
+			<td class="label"></td>
+		</tr>
+		<tr>
+			<td class="yellow" onclick="getColor('yellow')"></td>
+			<td class="label"></td>
+		</tr>
+		<tr>
+			<td class="orange" onclick="getColor('orange')"></td>
+			<td class="label"></td>
+		</tr>
+		<tr>
+			<td class="brown" onclick="getColor('brown')"></td>
+			<td class="label"></td>
+		</tr>
+		</table>
 		<table>
 		<tr>
 			<td></td>
@@ -81,113 +83,205 @@
 		</tr>
 		<tr>
 			<td id="row1"></td>
-			<td id="1-1"></td>
-			<td id="1-2"></td>
-			<td id="1-3"></td>
-			<td id="1-4"></td>
-			<td id="1-5"></td>
-			<td id="1-6"></td>
-			<td id="1-7"></td>
-			<td id="1-8"></td>
-			<td id="1-9"></td>
+			<td id="1-1" onclick="setColor('1-1')"></td>
+			<td id="1-2" onclick="setColor('1-2')"></td>
+			<td id="1-3" onclick="setColor('1-3')"></td>
+			<td id="1-4" onclick="setColor('1-4')"></td>
+			<td id="1-5" onclick="setColor('1-5')"></td>
+			<td id="1-6" onclick="setColor('1-6')"></td>
+			<td id="1-7" onclick="setColor('1-7')"></td>
+			<td id="1-8" onclick="setColor('1-8')"></td>
+			<td id="1-9" onclick="setColor('1-9')"></td>
 		</tr>
 		<tr>
 			<td id="row2"></td>
-			<td id="2-1"></td>
-			<td id="2-2"></td>
-			<td id="2-3"></td>
-			<td id="2-4"></td>
-			<td id="2-5"></td>
-			<td id="2-6"></td>
-			<td id="2-7"></td>
-			<td id="2-8"></td>
-			<td id="2-9"></td>
+			<td id="2-1" onclick="setColor('2-1')"></td>
+			<td id="2-2" onclick="setColor('2-2')"></td>
+			<td id="2-3" onclick="setColor('2-3')"></td>
+			<td id="2-4" onclick="setColor('2-4')"></td>
+			<td id="2-5" onclick="setColor('2-5')"></td>
+			<td id="2-6" onclick="setColor('2-6')"></td>
+			<td id="2-7" onclick="setColor('2-7')"></td>
+			<td id="2-8" onclick="setColor('2-8')"></td>
+			<td id="2-9" onclick="setColor('2-9')"></td>
 		</tr>
 		<tr>
 			<td id="row3"></td>
-			<td id="3-1"></td>
-			<td id="3-2"></td>
-			<td id="3-3"></td>
-			<td id="3-4"></td>
-			<td id="3-5"></td>
-			<td id="3-6"></td>
-			<td id="3-7"></td>
-			<td id="3-8"></td>
-			<td id="3-9"></td>
+			<td id="3-1" onclick="setColor('3-1')"></td>
+			<td id="3-2" onclick="setColor('3-2')"></td>
+			<td id="3-3" onclick="setColor('3-3')"></td>
+			<td id="3-4" onclick="setColor('3-4')"></td>
+			<td id="3-5" onclick="setColor('3-5')"></td>
+			<td id="3-6" onclick="setColor('3-6')"></td>
+			<td id="3-7" onclick="setColor('3-7')"></td>
+			<td id="3-8" onclick="setColor('3-8')"></td>
+			<td id="3-9" onclick="setColor('3-9')"></td>
 		</tr>
 		<tr>
 			<td id="row4"></td>
-			<td id="4-1"></td>
-			<td id="4-2"></td>
-			<td id="4-3"></td>
-			<td id="4-4"></td>
-			<td id="4-5"></td>
-			<td id="4-6"></td>
-			<td id="4-7"></td>
-			<td id="4-8"></td>
-			<td id="4-9"></td>
+			<td id="4-1" onclick="setColor('4-1')"></td>
+			<td id="4-2" onclick="setColor('4-2')"></td>
+			<td id="4-3" onclick="setColor('4-3')"></td>
+			<td id="4-4" onclick="setColor('4-4')"></td>
+			<td id="4-5" onclick="setColor('4-5')"></td>
+			<td id="4-6" onclick="setColor('4-6')"></td>
+			<td id="4-7" onclick="setColor('4-7')"></td>
+			<td id="4-8" onclick="setColor('4-8')"></td>
+			<td id="4-9" onclick="setColor('4-9')"></td>
 		</tr>
 		<tr>
 			<td id="row5"></td>
-			<td id="5-1"></td>
-			<td id="5-2"></td>
-			<td id="5-3"></td>
-			<td id="5-4"></td>
-			<td id="5-5"></td>
-			<td id="5-6"></td>
-			<td id="5-7"></td>
-			<td id="5-8"></td>
-			<td id="5-9"></td>
+			<td id="5-1" onclick="setColor('5-1')"></td>
+			<td id="5-2" onclick="setColor('5-2')"></td>
+			<td id="5-3" onclick="setColor('5-3')"></td>
+			<td id="5-4" onclick="setColor('5-4')"></td>
+			<td id="5-5" onclick="setColor('5-5')"></td>
+			<td id="5-6" onclick="setColor('5-6')"></td>
+			<td id="5-7" onclick="setColor('5-7')"></td>
+			<td id="5-8" onclick="setColor('5-8')"></td>
+			<td id="5-9" onclick="setColor('5-9')"></td>
 		</tr>
 		<tr>
 			<td id="row6"></td>
-			<td id="6-1"></td>
-			<td id="6-2"></td>
-			<td id="6-3"></td>
-			<td id="6-4"></td>
-			<td id="6-5"></td>
-			<td id="6-6"></td>
-			<td id="6-7"></td>
-			<td id="6-8"></td>
-			<td id="6-9"></td>
+			<td id="6-1" onclick="setColor('6-1')"></td>
+			<td id="6-2" onclick="setColor('6-2')"></td>
+			<td id="6-3" onclick="setColor('6-3')"></td>
+			<td id="6-4" onclick="setColor('6-4')"></td>
+			<td id="6-5" onclick="setColor('6-5')"></td>
+			<td id="6-6" onclick="setColor('6-6')"></td>
+			<td id="6-7" onclick="setColor('6-7')"></td>
+			<td id="6-8" onclick="setColor('6-8')"></td>
+			<td id="6-9" onclick="setColor('6-9')"></td>
 		</tr>
 		<tr>
 			<td id="row7"></td>
-			<td id="7-1"></td>
-			<td id="7-2"></td>
-			<td id="7-3"></td>
-			<td id="7-4"></td>
-			<td id="7-5"></td>
-			<td id="7-6"></td>
-			<td id="7-7"></td>
-			<td id="7-8"></td>
-			<td id="7-9"></td>
+			<td id="7-1" onclick="setColor('7-1')"></td>
+			<td id="7-2" onclick="setColor('7-2')"></td>
+			<td id="7-3" onclick="setColor('7-3')"></td>
+			<td id="7-4" onclick="setColor('7-4')"></td>
+			<td id="7-5" onclick="setColor('7-5')"></td>
+			<td id="7-6" onclick="setColor('7-6')"></td>
+			<td id="7-7" onclick="setColor('7-7')"></td>
+			<td id="7-8" onclick="setColor('7-8')"></td>
+			<td id="7-9" onclick="setColor('7-9')"></td>
 		</tr>
 		<tr>
 			<td id="row8"></td>
-			<td id="8-1"></td>
-			<td id="8-2"></td>
-			<td id="8-3"></td>
-			<td id="8-4"></td>
-			<td id="8-5"></td>
-			<td id="8-6"></td>
-			<td id="8-7"></td>
-			<td id="8-8"></td>
-			<td id="8-9"></td>
+			<td id="8-1" onclick="setColor('8-1')"></td>
+			<td id="8-2" onclick="setColor('8-2')"></td>
+			<td id="8-3" onclick="setColor('8-3')"></td>
+			<td id="8-4" onclick="setColor('8-4')"></td>
+			<td id="8-5" onclick="setColor('8-5')"></td>
+			<td id="8-6" onclick="setColor('8-6')"></td>
+			<td id="8-7" onclick="setColor('8-7')"></td>
+			<td id="8-8" onclick="setColor('8-8')"></td>
+			<td id="8-9" onclick="setColor('8-9')"></td>
 		</tr>
 		<tr>
 			<td id="row9"></td>
-			<td id="9-9"></td>
-			<td id="9-2"></td>
-			<td id="9-3"></td>
-			<td id="9-4"></td>
-			<td id="9-5"></td>
-			<td id="9-6"></td>
-			<td id="9-7"></td>
-			<td id="9-8"></td>
-			<td id="9-9"></td>
+			<td id="9-1" onclick="setColor('9-1')"></td>
+			<td id="9-2" onclick="setColor('9-2')"></td>
+			<td id="9-3" onclick="setColor('9-3')"></td>
+			<td id="9-4" onclick="setColor('9-4')"></td>
+			<td id="9-5" onclick="setColor('9-5')"></td>
+			<td id="9-6" onclick="setColor('9-6')"></td>
+			<td id="9-7" onclick="setColor('9-7')"></td>
+			<td id="9-8" onclick="setColor('9-8')"></td>
+			<td id="9-9" onclick="setColor('9-9')"></td>
 		</tr>
 		</table>
 		
+		<script>
+			//answer board
+			var row1 = [2,9,5,7,4,3,8,6,1];
+			var row2 = [4,3,1,8,6,5,9,2,7];
+			var row3 = [8,7,6,1,9,2,5,4,3];
+			var row4 = [3,8,7,4,5,9,2,1,6];
+			var row5 = [6,1,2,3,8,7,4,9,5];
+			var row6 = [5,4,9,2,1,6,7,3,8];
+			var row7 = [7,6,3,5,3,4,1,8,9];
+			var row8 = [9,2,8,6,7,1,3,5,4];
+			var row9 = [1,5,4,9,3,8,6,7,2];
+			var matrix = [row1,row2,row3,row4,row5,row6,row7,row8,row9];
+			//blank board to be populated with user input
+			var checkMatrix = [[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0]];
+			//color currently chosen by user
+			var currentColor = "";
+			
+			//matrix operations
+			function randomRowSwap(){
+				n = Math.floor(Math.random()*9);
+				m = Math.floor(Math.random()*9);
+				hold = matrix[n].slice();
+				
+				matrix[n] = matrix[m].slice();
+				matrix[m] = hold.slice();
+			}
+			function randomColumnSwap(){
+				n = Math.floor(Math.random()*9);
+				m = Math.floor(Math.random()*9);
+				hold = 0;
+				
+				for(i=0;i<9;i++)
+				{
+					hold = matrix[i][n];
+					matrix[i][n] = matrix[i][m];
+					matrix[i][m] = hold;
+				}
+			}
+			//end matrix operations
+			
+			//scramble base answer board and populate html board
+			function populateBoard()
+			{
+				var cell = "";
+				for(i=0;i<9;i++)
+				{
+					for(j=0;j<9;j++)
+					{
+						cell = "#"+(i+1).toString()+"-"+(j+1).toString();
+						$(cell).html(matrix[i][j]);
+					}
+				}
+			}
+			
+			function generateNewBoard()
+			{
+				for(i=0;i<5;i++)
+				{
+					var pick = Math.random();
+					console.log(pick);
+					
+					if(pick > 0.5)
+					{
+						console.log("column");
+						randomColumnSwap();
+					}
+					else
+					{
+						randomRowSwap();
+						console.log("row");
+					}
+				}
+				populateBoard();
+			}
+			
+			//functions to choose and set cell colors
+			function getColor(color)
+			{
+				currentColor = color;
+				console.log(color);
+			}
+			
+			function setColor(cellID)
+			{
+				$("#"+cellID).removeClass();
+				console.log(cellID);
+				$("#"+cellID).addClass(currentColor);
+			}
+			
+			
+			$(document).ready(generateNewBoard());
+		</script>
 	</body>
 </html>
