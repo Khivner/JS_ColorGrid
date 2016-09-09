@@ -215,6 +215,8 @@
 			var colors = ["","red","green","blue","cyan","purple","pink","yellow","orange","brown"];
 			//counter for level of board filledness <- is that a word?
 			var filledness = 0;
+			//counter for number of games played or attempted
+			var gameCount =0;
 			
 			//matrix operations
 			function randomRowSwap(){
@@ -292,19 +294,21 @@
 				
 				while(n<given)
 				{
-					console.log("given: %i; n: %i",given,n);
 					randomIndex = Math.floor(Math.random()*numbers);
 					index = indices[randomIndex].split(',');
 					indices.splice(randomIndex,1);
 					checkMatrix[parseInt(index[0])][parseInt(index[1])] = matrix[parseInt(index[0])][parseInt(index[1])];
 					given--;
 					numbers--;
+					$("#"+(parseInt(index[0])+1).toString()+"-"+(parseInt(index[1])+1).toString()).prop("onclick",null);
 				}
 			}
 			//scramble base answer board
 			function generateNewBoard(difficulty)
 			{
 				var given = 0;
+				gameCount++;
+				
 				switch(difficulty){
 					case "easy":
 						given = 35;
