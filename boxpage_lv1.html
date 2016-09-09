@@ -8,6 +8,7 @@
 			table{
 			display: inline;
 			margin: auto;
+			border-collapse:collapse;
 			}
 			td{
 			border-style: solid;
@@ -190,7 +191,11 @@
 			<td id="9-9" onclick="setColor('9-9')"></td>
 		</tr>
 		</table>
-		
+		<div>
+		<button onclick="generateNewBoard('easy')">Easy</button>
+		<button onclick="generateNewBoard('medium')">Medium</button>
+		<button onclick="generateNewBoard('hard')">Hard</button>
+		</div>
 		<script>
 			//answer board
 			var row1 = [2,9,5,7,4,3,8,6,1];
@@ -222,7 +227,7 @@
 				m = Math.floor(Math.random()*9);
 				hold = 0;
 				
-				for(i=0;i<9;i++)
+				for(var i=0;i<9;i++)
 				{
 					hold = matrix[i][n];
 					matrix[i][n] = matrix[i][m];
@@ -235,9 +240,9 @@
 			function populateBoard()
 			{
 				var cell = "";
-				for(i=0;i<9;i++)
+				for(var i=0;i<9;i++)
 				{
-					for(j=0;j<9;j++)
+					for(var j=0;j<9;j++)
 					{
 						cell = "#"+(i+1).toString()+"-"+(j+1).toString();
 						$(cell).html(matrix[i][j]);
@@ -245,22 +250,31 @@
 				}
 			}
 			
-			function generateNewBoard()
+			function generateNewBoard(difficulty)
 			{
-				for(i=0;i<5;i++)
+				console.log("START");
+				var given = 0;
+				switch(difficulty){
+					case "easy":
+						given = 35;
+					case "medium":
+						given = 20;
+					case "hard":
+						given = 10;
+				}
+				
+				for(var i=0;i<500;i++)
 				{
 					var pick = Math.random();
 					console.log(pick);
 					
 					if(pick > 0.5)
 					{
-						console.log("column");
 						randomColumnSwap();
 					}
 					else
 					{
 						randomRowSwap();
-						console.log("row");
 					}
 				}
 				populateBoard();
@@ -270,18 +284,13 @@
 			function getColor(color)
 			{
 				currentColor = color;
-				console.log(color);
 			}
 			
 			function setColor(cellID)
 			{
 				$("#"+cellID).removeClass();
-				console.log(cellID);
 				$("#"+cellID).addClass(currentColor);
-			}
-			
-			
-			$(document).ready(generateNewBoard());
+			}			
 		</script>
 	</body>
 </html>
