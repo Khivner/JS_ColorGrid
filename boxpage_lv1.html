@@ -34,39 +34,39 @@
 		<table>
 		<tr>
 			<td class="red" onclick="getColor('red')"></td>
-			<td class="label"></td>
+			<td class="label">1</td>
 		</tr>
 		<tr>
 			<td class="green" onclick="getColor('green')"></td>
-			<td class="label"></td>
+			<td class="label">2</td>
 		</tr>
 		<tr>
 			<td class="blue" onclick="getColor('blue')"></td>
-			<td class="label"></td>
+			<td class="label">3</td>
 		</tr>
 		<tr>
 			<td class="cyan" onclick="getColor('cyan')"></td>
-			<td class="label"></td>
+			<td class="label">4</td>
 		</tr>
 		<tr>
 			<td class="purple" onclick="getColor('purple')"></td>
-			<td class="label"></td>
+			<td class="label">5</td>
 		</tr>
 		<tr>
 			<td class="pink" onclick="getColor('pink')"></td>
-			<td class="label"></td>
+			<td class="label">6</td>
 		</tr>
 		<tr>
 			<td class="yellow" onclick="getColor('yellow')"></td>
-			<td class="label"></td>
+			<td class="label">7</td>
 		</tr>
 		<tr>
 			<td class="orange" onclick="getColor('orange')"></td>
-			<td class="label"></td>
+			<td class="label">8</td>
 		</tr>
 		<tr>
 			<td class="brown" onclick="getColor('brown')"></td>
-			<td class="label"></td>
+			<td class="label">9</td>
 		</tr>
 		</table>
 		<table>
@@ -212,6 +212,7 @@
 			var checkMatrix = [[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0]];
 			//color currently chosen by user
 			var currentColor = "";
+			var colors = ["red","green","blue","cyan","purple","pink","yellow","orange","brown"]
 			
 			//matrix operations
 			function randomRowSwap(){
@@ -236,6 +237,18 @@
 			}
 			//end matrix operations
 			
+			//functions to choose and set cell colors
+			function getColor(color)
+			{
+				currentColor = color;
+			}
+			
+			function setColor(cellID)
+			{
+				$("#"+cellID).removeClass();
+				$("#"+cellID).addClass(currentColor);
+			}			
+			
 			//scramble base answer board and populate html board
 			function populateBoard()
 			{
@@ -244,10 +257,13 @@
 				{
 					for(var j=0;j<9;j++)
 					{
-						cell = "#"+(i+1).toString()+"-"+(j+1).toString();
-						$(cell).html(matrix[i][j]);
+						currentColor = colors[matrix[i][j]-1];
+						cell = (i+1).toString()+"-"+(j+1).toString();
+						$("#"+cell).html(matrix[i][j]);
+						setColor(cell);
 					}
 				}
+				currentColor = "";
 			}
 			
 			function generateNewBoard(difficulty)
@@ -279,18 +295,6 @@
 				}
 				populateBoard();
 			}
-			
-			//functions to choose and set cell colors
-			function getColor(color)
-			{
-				currentColor = color;
-			}
-			
-			function setColor(cellID)
-			{
-				$("#"+cellID).removeClass();
-				$("#"+cellID).addClass(currentColor);
-			}			
 		</script>
 	</body>
 </html>
