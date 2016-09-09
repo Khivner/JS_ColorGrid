@@ -212,7 +212,9 @@
 			var checkMatrix = [[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0]];
 			//color currently chosen by user
 			var currentColor = "";
-			var colors = ["red","green","blue","cyan","purple","pink","yellow","orange","brown"]
+			var colors = ["","red","green","blue","cyan","purple","pink","yellow","orange","brown"];
+			//counter for level of board filledness <- is that a word?
+			var filledness = 0;
 			
 			//matrix operations
 			function randomRowSwap(){
@@ -245,11 +247,18 @@
 			
 			function setColor(cellID)
 			{
-				$("#"+cellID).removeClass();
+				var classCheck = document.getElementById(cellID).className.split(/\s+/);
+
+				if(classCheck[0] !== "")
+				{
+					$("#"+cellID).removeClass();
+				}
+				else{filledness++;}
+				
 				$("#"+cellID).addClass(currentColor);
 			}			
 			
-			//scramble base answer board and populate html board
+			//populates html board
 			function populateBoard()
 			{
 				var cell = "";
@@ -257,32 +266,60 @@
 				{
 					for(var j=0;j<9;j++)
 					{
-						currentColor = colors[matrix[i][j]-1];
+						currentColor = colors[checkMatrix[i][j]];
 						cell = (i+1).toString()+"-"+(j+1).toString();
-						$("#"+cell).html(matrix[i][j]);
+						$("#"+cell).html(checkMatrix[i][j]);
 						setColor(cell);
 					}
 				}
 				currentColor = "";
 			}
-			
+			//generates the matrix for the board the user will fill in
+			function hideCells(given)
+			{
+				var index;
+				var randomIndex
+				var indices = [];
+				var numbers = 81;
+				var n = 0;
+				for(var i=0;i<9;i++)
+				{
+					for(var j=0;j<9;j++)
+					{
+						indices.push(i.toString()+','+j.toString());
+					}
+				}
+				
+				while(n<given)
+				{
+					console.log("given: %i; n: %i",given,n);
+					randomIndex = Math.floor(Math.random()*numbers);
+					index = indices[randomIndex].split(',');
+					indices.splice(randomIndex,1);
+					checkMatrix[parseInt(index[0])][parseInt(index[1])] = matrix[parseInt(index[0])][parseInt(index[1])];
+					given--;
+					numbers--;
+				}
+			}
+			//scramble base answer board
 			function generateNewBoard(difficulty)
 			{
-				console.log("START");
 				var given = 0;
 				switch(difficulty){
 					case "easy":
 						given = 35;
+						break;
 					case "medium":
 						given = 20;
+						break;
 					case "hard":
 						given = 10;
+						break;
 				}
 				
 				for(var i=0;i<500;i++)
 				{
 					var pick = Math.random();
-					console.log(pick);
 					
 					if(pick > 0.5)
 					{
@@ -293,7 +330,13 @@
 						randomRowSwap();
 					}
 				}
+				hideCells(given);
 				populateBoard();
+			}
+			
+			function winConditionCheck()
+			{
+				
 			}
 		</script>
 	</body>
