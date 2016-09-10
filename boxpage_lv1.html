@@ -33,39 +33,39 @@
 	<body>
 		<table>
 		<tr>
-			<td class="red" onclick="getColor('red')"></td>
+			<td class="red" onclick="getColor('red',1)"></td>
 			<td class="label">1</td>
 		</tr>
 		<tr>
-			<td class="green" onclick="getColor('green')"></td>
+			<td class="green" onclick="getColor('green',2)"></td>
 			<td class="label">2</td>
 		</tr>
 		<tr>
-			<td class="blue" onclick="getColor('blue')"></td>
+			<td class="blue" onclick="getColor('blue',3)"></td>
 			<td class="label">3</td>
 		</tr>
 		<tr>
-			<td class="cyan" onclick="getColor('cyan')"></td>
+			<td class="cyan" onclick="getColor('cyan',4)"></td>
 			<td class="label">4</td>
 		</tr>
 		<tr>
-			<td class="purple" onclick="getColor('purple')"></td>
+			<td class="purple" onclick="getColor('purple',5)"></td>
 			<td class="label">5</td>
 		</tr>
 		<tr>
-			<td class="pink" onclick="getColor('pink')"></td>
+			<td class="pink" onclick="getColor('pink',6)"></td>
 			<td class="label">6</td>
 		</tr>
 		<tr>
-			<td class="yellow" onclick="getColor('yellow')"></td>
+			<td class="yellow" onclick="getColor('yellow',7)"></td>
 			<td class="label">7</td>
 		</tr>
 		<tr>
-			<td class="orange" onclick="getColor('orange')"></td>
+			<td class="orange" onclick="getColor('orange',8)"></td>
 			<td class="label">8</td>
 		</tr>
 		<tr>
-			<td class="brown" onclick="getColor('brown')"></td>
+			<td class="brown" onclick="getColor('brown',9)"></td>
 			<td class="label">9</td>
 		</tr>
 		</table>
@@ -208,15 +208,18 @@
 			var row8 = [9,2,8,6,7,1,3,5,4];
 			var row9 = [1,5,4,9,3,8,6,7,2];
 			var matrix = [row1,row2,row3,row4,row5,row6,row7,row8,row9];
-			//blank board to be populated with user input
-			var checkMatrix = [[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0]];
+			//blank board to be populated with user input to be set in generateNewBoard()
+			var checkMatrix;
+			
 			//color currently chosen by user
+			var currentColornumber = 0;
 			var currentColor = "";
 			var colors = ["","red","green","blue","cyan","purple","pink","yellow","orange","brown"];
-			//counter for level of board filledness <- is that a word?
-			var filledness = 0;
+
 			//counter for number of games played or attempted
 			var gameCount =0;
+			//counter for checking win condition
+			var colortry;
 			
 			//matrix operations
 			function randomRowSwap(){
@@ -241,23 +244,76 @@
 			}
 			//end matrix operations
 			
+			//if multiple games are played resets onclick for cells that were previously prepopulated and static
+			function set_onClick()
+			{
+				var id_string = "";
+				for(var i=0;i<9;i++)
+				{
+					for(var j=0;j<9;j++)
+					{
+						id_string = (i+1).toString()+"-"+(j+1).toString();
+						$("#"+id_string).attr("onclick","setColor('"+id_string+"')");//
+					}
+				}
+			}
+			
+			//Check to see if user won the game
+			function winConditionCheck()
+			{
+				function sortNumber(a,b) {return a - b;}
+				var rowCompare;
+				var colCompare;
+				
+				for(var i=0;i<9;i++)
+				{
+					//generate arrays representing row i and column i
+					rowCompare = checkMatrix[i].slice();
+					colCompare = [];
+					for(var j=0;j<9;j++)
+					{
+						colCompare.push(checkMatrix[j][i]);
+					}
+					//numerically sort row and column
+					rowCompare.sort(sortNumber);
+					console.log(rowCompare);
+					colCompare.sort(sortNumber)
+					console.log(colCompare);
+					//check to see if sorted row and column are both numbers 1-9 (win condition)
+					for(var j=0;j<9;j++)
+					{
+						if(((j+1) !== rowCompare[j]) || ((j+1) !== colCompare[j]))
+						{
+							console.log("%i false",i);
+							return false;
+						}
+					}
+					return true
+				}
+			}
+			
 			//functions to choose and set cell colors
-			function getColor(color)
+			function getColor(color, number)
 			{
 				currentColor = color;
+				currentColornumber = number;
+				colortry++;
 			}
 			
 			function setColor(cellID)
 			{
 				var classCheck = document.getElementById(cellID).className.split(/\s+/);
-
-				if(classCheck[0] !== "")
-				{
-					$("#"+cellID).removeClass();
-				}
-				else{filledness++;}
+				var checkIndices = cellID.split("-");
 				
+				$("#"+cellID).removeClass();	
 				$("#"+cellID).addClass(currentColor);
+				//updates the checkMatrix which tracks the game progress
+				checkMatrix[parseInt(checkIndices[0])-1][parseInt(checkIndices[1])-1] = currentColornumber;
+				//check for win condition
+				if(colortry > 0)
+				{
+					winConditionCheck();
+				}
 			}			
 			
 			//populates html board
@@ -269,11 +325,13 @@
 					for(var j=0;j<9;j++)
 					{
 						currentColor = colors[checkMatrix[i][j]];
+						currentColornumber = checkMatrix[i][j];
 						cell = (i+1).toString()+"-"+(j+1).toString();
 						$("#"+cell).html(checkMatrix[i][j]);
 						setColor(cell);
 					}
 				}
+				//clears currentColor so user cannot fill cells until they choose from palette
 				currentColor = "";
 			}
 			//generates the matrix for the board the user will fill in
@@ -300,15 +358,21 @@
 					checkMatrix[parseInt(index[0])][parseInt(index[1])] = matrix[parseInt(index[0])][parseInt(index[1])];
 					given--;
 					numbers--;
+					//makes prepopulated cells static so users can't change them accidentally
 					$("#"+(parseInt(index[0])+1).toString()+"-"+(parseInt(index[1])+1).toString()).prop("onclick",null);
 				}
 			}
 			//scramble base answer board
 			function generateNewBoard(difficulty)
 			{
+				checkMatrix = [[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0]];
 				var given = 0;
 				gameCount++;
-				
+				colortry = 0;
+				if(gameCount>1)
+				{
+					set_onClick();
+				}
 				switch(difficulty){
 					case "easy":
 						given = 35;
@@ -336,11 +400,6 @@
 				}
 				hideCells(given);
 				populateBoard();
-			}
-			
-			function winConditionCheck()
-			{
-				
 			}
 		</script>
 	</body>
