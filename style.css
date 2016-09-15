@@ -1,0 +1,73 @@
+body { background-color: white;
+text-align: center;
+vertical-align: middle;
+font-family: Monaco;
+font-weight: bold;
+color: #1ec503;
+background-color: black;}
+
+.row{
+width: 900px;
+display: table-row;
+}
+.table{
+display: table;
+text-align:center;
+margin: 0 auto;
+}
+.cell{
+display: table-cell;
+}
+
+.title-cell{
+display: table-cell;
+font-size: 40px;
+}
+
+table{
+border-collapse: separate;
+border-color: white;
+}
+
+td{
+text-align: center;
+border-style: solid;
+border-color: gray;
+height: 35px;
+width: 35px;
+margin: 2px;
+}
+
+.given-cell{
+border-color: white;
+}
+#palette{
+display: table-cell;
+margin-right: 0 auto;
+}
+
+#board{
+display: table-cell;
+padding-left: 20px;
+}
+
+#buttons{
+padding-top: 10px;
+text-align:center;
+}
+#body{
+margin: auto;
+}
+#rules{
+width: 450px;
+margin: 3% auto 3% auto;}
+
+.red{background-color: red;}
+.blue{background-color: blue;}
+.green{background-color: green;}
+.orange{background-color: orange;}
+.pink{background-color: pink;}
+.yellow{background-color: yellow;}
+.cyan{background-color: #00FFFF;}
+.brown{background-color: saddlebrown;}
+.purple{background-color: orchid;}
