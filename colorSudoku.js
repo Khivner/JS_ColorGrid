@@ -10,7 +10,7 @@ var row8 = [9,2,8,6,7,1,3,5,4];
 var row9 = [1,5,4,9,3,8,6,7,2];
 var matrix = [row1,row2,row3,row4,row5,row6,row7,row8,row9];
 //blank board to be populated with user input to be set in generateNewBoard()
-var checkMatrix;
+checkMatrix = [[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0]];
 
 //color currently chosen by user
 var currentColornumber = 0;
@@ -20,7 +20,7 @@ var colors = ["","red","green","blue","cyan","purple","pink","yellow","orange","
 //counter for number of games played or attempted
 var gameCount =0;
 //counter for checking win condition
-var colortry;
+var colortry = 0;
 
 //matrix operations
 function randomRowSwap(){
