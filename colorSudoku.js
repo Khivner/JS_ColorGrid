@@ -54,7 +54,7 @@ function set_onClick()
 		for(var j=0;j<9;j++)
 		{
 			id_string = (i+1).toString()+"-"+(j+1).toString();
-			$("#"+id_string).attr("onclick","setColor('"+id_string+"')");//
+			$("#"+id_string).attr("onclick","setColor('"+id_string+"')");
 		}
 	}
 }
@@ -167,7 +167,7 @@ function hideCells(given)
 		given--;
 		numbers--;
 		//makes prepopulated cells static so users can't change them accidentally
-		$("#"+(parseInt(index[0])+1).toString()+"-"+(parseInt(index[1])+1).toString()).prop("onclick",null);
+		$("#"+(parseInt(index[0])+1).toString()+"-"+(parseInt(index[1])+1).toString()).attr("onclick",null);
 	}
 }
 //scramble base answer board
