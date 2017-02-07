@@ -3,13 +3,8 @@ text-align: center;
 vertical-align: middle;
 font-family: Monaco;
 font-weight: bold;
-color: #1ec503;
-background-color: black;}
+color: #1ec503;}
 
-.row{
-width: 900px;
-display: table-row;
-}
 .table{
 display: table;
 text-align:center;
@@ -33,13 +28,25 @@ td{
 text-align: center;
 border-style: solid;
 border-color: gray;
-height: 35px;
-width: 35px;
+height: 3em;
+width: 3em;
 margin: 2px;
+background-color :white;
 }
 
-.given-cell{
-border-color: white;
+/* Adds a checkmark to the given cell */
+.given-cell:before {
+    content: '\2713';
+    color: gray;
+/*border-color: white;*/
+}
+
+.selected-palette:after {
+    content: '\21d0';
+}
+
+.selected-palette-label {
+    background-color: lightgoldenrodyellow;
 }
 #palette{
 display: table-cell;
@@ -48,7 +55,7 @@ margin-right: 0 auto;
 
 #board{
 display: table-cell;
-padding-left: 20px;
+background-color: gray;
 }
 
 #buttons{
@@ -59,15 +66,114 @@ text-align:center;
 margin: auto;
 }
 #rules{
-width: 450px;
+width: 30em;
 margin: 3% auto 3% auto;}
 
-.red{background-color: red;}
-.blue{background-color: blue;}
-.green{background-color: green;}
-.orange{background-color: orange;}
-.pink{background-color: pink;}
-.yellow{background-color: yellow;}
-.cyan{background-color: #00FFFF;}
-.brown{background-color: saddlebrown;}
-.purple{background-color: orchid;}
+.red{background-color: red; border-radius: 0.4em;}
+.blue{background-color: blue; border-radius: 0.4em;}
+.green{background-color: green; border-radius: 0.4em;}
+.orange{background-color: orange; border-radius: 0.4em;}
+.pink{background-color: pink; border-radius: 0.4em;} 
+.yellow{background-color: yellow;border-radius: 0.4em;}
+.cyan{background-color: #00FFFF;border-radius: 0.4em;}
+.brown{background-color: saddlebrown;border-radius: 0.4em;}
+.purple{background-color: orchid;border-radius: 0.4em;}
+
+#board .red {
+    background: rgba(255,92,95,1);
+    background: -moz-radial-gradient(center, ellipse cover, rgba(255,92,95,1) 0%, rgba(239,1,5,1) 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(255,92,95,1)), color-stop(100%, rgba(239,1,5,1)));
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(255,92,95,1) 0%, rgba(239,1,5,1) 100%);
+    background: -o-radial-gradient(center, ellipse cover, rgba(255,92,95,1) 0%, rgba(239,1,5,1) 100%);
+    background: -ms-radial-gradient(center, ellipse cover, rgba(255,92,95,1) 0%, rgba(239,1,5,1) 100%);
+    background: radial-gradient(ellipse at center, rgba(255,92,95,1) 0%, rgba(239,1,5,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5c5f', endColorstr='#ef0105', GradientType=1 );
+}
+
+#board .blue {
+    background: rgba(92,103,255,1);
+    background: -moz-radial-gradient(center, ellipse cover, rgba(92,103,255,1) 0%, rgba(1,17,239,1) 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(92,103,255,1)), color-stop(100%, rgba(1,17,239,1)));
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(92,103,255,1) 0%, rgba(1,17,239,1) 100%);
+    background: -o-radial-gradient(center, ellipse cover, rgba(92,103,255,1) 0%, rgba(1,17,239,1) 100%);
+    background: -ms-radial-gradient(center, ellipse cover, rgba(92,103,255,1) 0%, rgba(1,17,239,1) 100%);
+    background: radial-gradient(ellipse at center, rgba(92,103,255,1) 0%, rgba(1,17,239,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5c67ff', endColorstr='#0111ef', GradientType=1 );
+}
+
+#board .green {
+    background: rgba(14,209,0,1);
+    background: -moz-radial-gradient(center, ellipse cover, rgba(14,209,0,1) 0%, rgba(10,142,1,1) 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(14,209,0,1)), color-stop(100%, rgba(10,142,1,1)));
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(14,209,0,1) 0%, rgba(10,142,1,1) 100%);
+    background: -o-radial-gradient(center, ellipse cover, rgba(14,209,0,1) 0%, rgba(10,142,1,1) 100%);
+    background: -ms-radial-gradient(center, ellipse cover, rgba(14,209,0,1) 0%, rgba(10,142,1,1) 100%);
+    background: radial-gradient(ellipse at center, rgba(14,209,0,1) 0%, rgba(10,142,1,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0ed100', endColorstr='#0a8e01', GradientType=1 );
+}
+
+#board .orange {
+    background: rgba(255,169,71,1);
+    background: -moz-radial-gradient(center, ellipse cover, rgba(255,169,71,1) 0%, rgba(223,120,1,1) 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(255,169,71,1)), color-stop(100%, rgba(223,120,1,1)));
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(255,169,71,1) 0%, rgba(223,120,1,1) 100%);
+    background: -o-radial-gradient(center, ellipse cover, rgba(255,169,71,1) 0%, rgba(223,120,1,1) 100%);
+    background: -ms-radial-gradient(center, ellipse cover, rgba(255,169,71,1) 0%, rgba(223,120,1,1) 100%);
+    background: radial-gradient(ellipse at center, rgba(255,169,71,1) 0%, rgba(223,120,1,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffa947', endColorstr='#df7801', GradientType=1 );
+}
+
+#board .pink {
+    background: rgba(255,194,227,1);
+    background: -moz-radial-gradient(center, ellipse cover, rgba(255,194,227,1) 0%, rgba(255,56,165,1) 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(255,194,227,1)), color-stop(100%, rgba(255,56,165,1)));
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(255,194,227,1) 0%, rgba(255,56,165,1) 100%);
+    background: -o-radial-gradient(center, ellipse cover, rgba(255,194,227,1) 0%, rgba(255,56,165,1) 100%);
+    background: -ms-radial-gradient(center, ellipse cover, rgba(255,194,227,1) 0%, rgba(255,56,165,1) 100%);
+    background: radial-gradient(ellipse at center, rgba(255,194,227,1) 0%, rgba(255,56,165,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffc2e3', endColorstr='#ff38a5', GradientType=1 );
+}
+
+#board .yellow {
+    background: rgba(255,249,61,1);
+    background: -moz-radial-gradient(center, ellipse cover, rgba(255,249,61,1) 0%, rgba(219,208,0,1) 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(255,249,61,1)), color-stop(100%, rgba(219,208,0,1)));
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(255,249,61,1) 0%, rgba(219,208,0,1) 100%);
+    background: -o-radial-gradient(center, ellipse cover, rgba(255,249,61,1) 0%, rgba(219,208,0,1) 100%);
+    background: -ms-radial-gradient(center, ellipse cover, rgba(255,249,61,1) 0%, rgba(219,208,0,1) 100%);
+    background: radial-gradient(ellipse at center, rgba(255,249,61,1) 0%, rgba(219,208,0,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fff93d', endColorstr='#dbd000', GradientType=1 );
+}
+
+#board .cyan {
+    background: rgba(77,240,255,1);
+    background: -moz-radial-gradient(center, ellipse cover, rgba(77,240,255,1) 0%, rgba(0,214,230,1) 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(77,240,255,1)), color-stop(100%, rgba(0,214,230,1)));
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(77,240,255,1) 0%, rgba(0,214,230,1) 100%);
+    background: -o-radial-gradient(center, ellipse cover, rgba(77,240,255,1) 0%, rgba(0,214,230,1) 100%);
+    background: -ms-radial-gradient(center, ellipse cover, rgba(77,240,255,1) 0%, rgba(0,214,230,1) 100%);
+    background: radial-gradient(ellipse at center, rgba(77,240,255,1) 0%, rgba(0,214,230,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4df0ff', endColorstr='#00d6e6', GradientType=1 );
+}
+
+#board .brown {
+    background: rgba(216,157,105,1);
+    background: -moz-radial-gradient(center, ellipse cover, rgba(216,157,105,1) 0%, rgba(178,106,46,1) 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(216,157,105,1)), color-stop(100%, rgba(178,106,46,1)));
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(216,157,105,1) 0%, rgba(178,106,46,1) 100%);
+    background: -o-radial-gradient(center, ellipse cover, rgba(216,157,105,1) 0%, rgba(178,106,46,1) 100%);
+    background: -ms-radial-gradient(center, ellipse cover, rgba(216,157,105,1) 0%, rgba(178,106,46,1) 100%);
+    background: radial-gradient(ellipse at center, rgba(216,157,105,1) 0%, rgba(178,106,46,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d89d69', endColorstr='#b26a2e', GradientType=1 );
+}
+
+#board .purple {
+    background: rgba(235,186,242,1);
+    background: -moz-radial-gradient(center, ellipse cover, rgba(235,186,242,1) 0%, rgba(201,75,221,1) 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(235,186,242,1)), color-stop(100%, rgba(201,75,221,1)));
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(235,186,242,1) 0%, rgba(201,75,221,1) 100%);
+    background: -o-radial-gradient(center, ellipse cover, rgba(235,186,242,1) 0%, rgba(201,75,221,1) 100%);
+    background: -ms-radial-gradient(center, ellipse cover, rgba(235,186,242,1) 0%, rgba(201,75,221,1) 100%);
+    background: radial-gradient(ellipse at center, rgba(235,186,242,1) 0%, rgba(201,75,221,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebbaf2', endColorstr='#c94bdd', GradientType=1 );
+}

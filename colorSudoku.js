@@ -100,6 +100,7 @@ function getColor(color, number)
 	currentColor = color;
 	currentColornumber = number;
 	colortry++;
+	setPaletteSelector(color);
 }
 
 function setColor(cellID)
@@ -118,7 +119,14 @@ function setColor(cellID)
 			alert("Congratulations you win!");
 		}
 	}
-}			
+}
+
+function setPaletteSelector(color) {
+	$('#palette tr').removeClass('selected-palette');
+	$('#palette .label').removeClass('selected-palette-label');
+	$('#palette').find('.' + color).parents('tr').addClass('selected-palette');
+	$('#palette').find('.' + color).siblings('.label').addClass('selected-palette-label');
+}		
 
 //populates html board
 function populateBoard()

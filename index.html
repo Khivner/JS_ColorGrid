@@ -4,193 +4,202 @@
 		<meta charset=utf-8>
 		<title>Color Sudoku</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
-
+    	<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
 		<script src="jquery-3.1.0.js"></script>
 		<script src="colorSudoku.js"></script>
+		<script src="bootstrap.min.js"></script>
 	</head>
 	
 	<body>
-		<div class="table">
+		<div class="container">
 			<div class="row">
-				<div class="cell"></div>
-				<div class="title-cell">Color Sudoku</div>
+				<div class="col-xs-12">
+					<h1 class="text-xs-center">Color Sudoku</h1>
+				</div>
 			</div>
 			<div class="row">
-				<div id="palette">
-					<table>
-					<tr>
-						<td class="red" onclick="getColor('red',1)"></td>
-						<td class="label">Red</td>
-					</tr>
-					<tr>
-						<td class="green" onclick="getColor('green',2)"></td>
-						<td class="label">Green</td>
-					</tr>
-					<tr>
-						<td class="blue" onclick="getColor('blue',3)"></td>
-						<td class="label">Blue</td>
-					</tr>
-					<tr>
-						<td class="cyan" onclick="getColor('cyan',4)"></td>
-						<td class="label">Cyan</td>
-					</tr>
-					<tr>
-						<td class="purple" onclick="getColor('purple',5)"></td>
-						<td class="label">Purple</td>
-					</tr>
-					<tr>
-						<td class="pink" onclick="getColor('pink',6)"></td>
-						<td class="label">Pink</td>
-					</tr>
-					<tr>
-						<td class="yellow" onclick="getColor('yellow',7)"></td>
-						<td class="label">Yellow</td>
-					</tr>
-					<tr>
-						<td class="orange" onclick="getColor('orange',8)"></td>
-						<td class="label">Orange</td>
-					</tr>
-					<tr>
-						<td class="brown" onclick="getColor('brown',9)"></td>
-						<td class="label">Brown</td>
-					</tr>
-					</table>
-				</div>
-			
-				<div id="board">
-					<table>
-					<tr>
-						<td></td>
-						<td id="col1">A</td>
-						<td id="col2">B</td>
-						<td id="col3">C</td>
-						<td id="col4">D</td>
-						<td id="col5">E</td>
-						<td id="col6">F</td>
-						<td id="col7">G</td>
-						<td id="col8">H</td>
-						<td id="col9">I</td>
-					</tr>
-					<tr>
-						<td id="row1">1</td>
-						<td id="1-1" onclick="setColor('1-1')"></td>
-						<td id="1-2" onclick="setColor('1-2')"></td>
-						<td id="1-3" onclick="setColor('1-3')"></td>
-						<td id="1-4" onclick="setColor('1-4')"></td>
-						<td id="1-5" onclick="setColor('1-5')"></td>
-						<td id="1-6" onclick="setColor('1-6')"></td>
-						<td id="1-7" onclick="setColor('1-7')"></td>
-						<td id="1-8" onclick="setColor('1-8')"></td>
-						<td id="1-9" onclick="setColor('1-9')"></td>
-					</tr>
-					<tr>
-						<td id="row2">2</td>
-						<td id="2-1" onclick="setColor('2-1')"></td>
-						<td id="2-2" onclick="setColor('2-2')"></td>
-						<td id="2-3" onclick="setColor('2-3')"></td>
-						<td id="2-4" onclick="setColor('2-4')"></td>
-						<td id="2-5" onclick="setColor('2-5')"></td>
-						<td id="2-6" onclick="setColor('2-6')"></td>
-						<td id="2-7" onclick="setColor('2-7')"></td>
-						<td id="2-8" onclick="setColor('2-8')"></td>
-						<td id="2-9" onclick="setColor('2-9')"></td>
-					</tr>
-					<tr>
-						<td id="row3">3</td>
-						<td id="3-1" onclick="setColor('3-1')"></td>
-						<td id="3-2" onclick="setColor('3-2')"></td>
-						<td id="3-3" onclick="setColor('3-3')"></td>
-						<td id="3-4" onclick="setColor('3-4')"></td>
-						<td id="3-5" onclick="setColor('3-5')"></td>
-						<td id="3-6" onclick="setColor('3-6')"></td>
-						<td id="3-7" onclick="setColor('3-7')"></td>
-						<td id="3-8" onclick="setColor('3-8')"></td>
-						<td id="3-9" onclick="setColor('3-9')"></td>
-					</tr>
-					<tr>
-						<td id="row4">4</td>
-						<td id="4-1" onclick="setColor('4-1')"></td>
-						<td id="4-2" onclick="setColor('4-2')"></td>
-						<td id="4-3" onclick="setColor('4-3')"></td>
-						<td id="4-4" onclick="setColor('4-4')"></td>
-						<td id="4-5" onclick="setColor('4-5')"></td>
-						<td id="4-6" onclick="setColor('4-6')"></td>
-						<td id="4-7" onclick="setColor('4-7')"></td>
-						<td id="4-8" onclick="setColor('4-8')"></td>
-						<td id="4-9" onclick="setColor('4-9')"></td>
-					</tr>
-					<tr>
-						<td id="row5">5</td>
-						<td id="5-1" onclick="setColor('5-1')"></td>
-						<td id="5-2" onclick="setColor('5-2')"></td>
-						<td id="5-3" onclick="setColor('5-3')"></td>
-						<td id="5-4" onclick="setColor('5-4')"></td>
-						<td id="5-5" onclick="setColor('5-5')"></td>
-						<td id="5-6" onclick="setColor('5-6')"></td>
-						<td id="5-7" onclick="setColor('5-7')"></td>
-						<td id="5-8" onclick="setColor('5-8')"></td>
-						<td id="5-9" onclick="setColor('5-9')"></td>
-					</tr>
-					<tr>
-						<td id="row6">6</td>
-						<td id="6-1" onclick="setColor('6-1')"></td>
-						<td id="6-2" onclick="setColor('6-2')"></td>
-						<td id="6-3" onclick="setColor('6-3')"></td>
-						<td id="6-4" onclick="setColor('6-4')"></td>
-						<td id="6-5" onclick="setColor('6-5')"></td>
-						<td id="6-6" onclick="setColor('6-6')"></td>
-						<td id="6-7" onclick="setColor('6-7')"></td>
-						<td id="6-8" onclick="setColor('6-8')"></td>
-						<td id="6-9" onclick="setColor('6-9')"></td>
-					</tr>
-					<tr>
-						<td id="row7">7</td>
-						<td id="7-1" onclick="setColor('7-1')"></td>
-						<td id="7-2" onclick="setColor('7-2')"></td>
-						<td id="7-3" onclick="setColor('7-3')"></td>
-						<td id="7-4" onclick="setColor('7-4')"></td>
-						<td id="7-5" onclick="setColor('7-5')"></td>
-						<td id="7-6" onclick="setColor('7-6')"></td>
-						<td id="7-7" onclick="setColor('7-7')"></td>
-						<td id="7-8" onclick="setColor('7-8')"></td>
-						<td id="7-9" onclick="setColor('7-9')"></td>
-					</tr>
-					<tr>
-						<td id="row8">8</td>
-						<td id="8-1" onclick="setColor('8-1')"></td>
-						<td id="8-2" onclick="setColor('8-2')"></td>
-						<td id="8-3" onclick="setColor('8-3')"></td>
-						<td id="8-4" onclick="setColor('8-4')"></td>
-						<td id="8-5" onclick="setColor('8-5')"></td>
-						<td id="8-6" onclick="setColor('8-6')"></td>
-						<td id="8-7" onclick="setColor('8-7')"></td>
-						<td id="8-8" onclick="setColor('8-8')"></td>
-						<td id="8-9" onclick="setColor('8-9')"></td>
-					</tr>
-					<tr>
-						<td id="row9">9</td>
-						<td id="9-1" onclick="setColor('9-1')"></td>
-						<td id="9-2" onclick="setColor('9-2')"></td>
-						<td id="9-3" onclick="setColor('9-3')"></td>
-						<td id="9-4" onclick="setColor('9-4')"></td>
-						<td id="9-5" onclick="setColor('9-5')"></td>
-						<td id="9-6" onclick="setColor('9-6')"></td>
-						<td id="9-7" onclick="setColor('9-7')"></td>
-						<td id="9-8" onclick="setColor('9-8')"></td>
-						<td id="9-9" onclick="setColor('9-9')"></td>
-					</tr>
-					</table>
-					<div id="buttons">
-						<button onclick="generateNewBoard('easy')">Easy</button>
-						<button onclick="generateNewBoard('medium')">Medium</button>
-						<button onclick="generateNewBoard('hard')">Hard</button>
+				<div class="col-md-2 col-xs-2 offset-md-1">
+					<div id="palette">
+						<table>
+						<tr>
+							<td class="red" onclick="getColor('red',1)"></td>
+							<td class="label" onclick="getColor('red',1)" >Red</td>
+						</tr>
+						<tr>
+							<td class="green" onclick="getColor('green',2)"></td>
+							<td class="label"  onclick="getColor('green',2)">Green</td>
+						</tr>
+						<tr>
+							<td class="blue" onclick="getColor('blue',3)"></td>
+							<td class="label" onclick="getColor('blue',3)">Blue</td>
+						</tr>
+						<tr>
+							<td class="cyan" onclick="getColor('cyan',4)"></td>
+							<td class="label" onclick="getColor('cyan',4)">Cyan</td>
+						</tr>
+						<tr>
+							<td class="purple" onclick="getColor('purple',5)"></td>
+							<td class="label" onclick="getColor('purple',5)">Purple</td>
+						</tr>
+						<tr>
+							<td class="pink" onclick="getColor('pink',6)"></td>
+							<td class="label" onclick="getColor('pink',6)">Pink</td>
+						</tr>
+						<tr>
+							<td class="yellow" onclick="getColor('yellow',7)"></td>
+							<td class="label" onclick="getColor('yellow',7)">Yellow</td>
+						</tr>
+						<tr>
+							<td class="orange" onclick="getColor('orange',8)"></td>
+							<td class="label" onclick="getColor('orange',8)">Orange</td>
+						</tr>
+						<tr>
+							<td class="brown" onclick="getColor('brown',9)"></td>
+							<td class="label" onclick="getColor('brown',9)">Brown</td>
+						</tr>
+						</table>
 					</div>
 				</div>
+
+				<div class="col-md-8 col-xs-10">
+					<div id="board">
+						<div>
+							<table>
+							<tr>
+								<td></td>
+								<td id="col1">A</td>
+								<td id="col2">B</td>
+								<td id="col3">C</td>
+								<td id="col4">D</td>
+								<td id="col5">E</td>
+								<td id="col6">F</td>
+								<td id="col7">G</td>
+								<td id="col8">H</td>
+								<td id="col9">I</td>
+							</tr>
+							<tr>
+								<td id="row1">1</td>
+								<td id="1-1" onclick="setColor('1-1')"></td>
+								<td id="1-2" onclick="setColor('1-2')"></td>
+								<td id="1-3" onclick="setColor('1-3')"></td>
+								<td id="1-4" onclick="setColor('1-4')"></td>
+								<td id="1-5" onclick="setColor('1-5')"></td>
+								<td id="1-6" onclick="setColor('1-6')"></td>
+								<td id="1-7" onclick="setColor('1-7')"></td>
+								<td id="1-8" onclick="setColor('1-8')"></td>
+								<td id="1-9" onclick="setColor('1-9')"></td>
+							</tr>
+							<tr>
+								<td id="row2">2</td>
+								<td id="2-1" onclick="setColor('2-1')"></td>
+								<td id="2-2" onclick="setColor('2-2')"></td>
+								<td id="2-3" onclick="setColor('2-3')"></td>
+								<td id="2-4" onclick="setColor('2-4')"></td>
+								<td id="2-5" onclick="setColor('2-5')"></td>
+								<td id="2-6" onclick="setColor('2-6')"></td>
+								<td id="2-7" onclick="setColor('2-7')"></td>
+								<td id="2-8" onclick="setColor('2-8')"></td>
+								<td id="2-9" onclick="setColor('2-9')"></td>
+							</tr>
+							<tr>
+								<td id="row3">3</td>
+								<td id="3-1" onclick="setColor('3-1')"></td>
+								<td id="3-2" onclick="setColor('3-2')"></td>
+								<td id="3-3" onclick="setColor('3-3')"></td>
+								<td id="3-4" onclick="setColor('3-4')"></td>
+								<td id="3-5" onclick="setColor('3-5')"></td>
+								<td id="3-6" onclick="setColor('3-6')"></td>
+								<td id="3-7" onclick="setColor('3-7')"></td>
+								<td id="3-8" onclick="setColor('3-8')"></td>
+								<td id="3-9" onclick="setColor('3-9')"></td>
+							</tr>
+							<tr>
+								<td id="row4">4</td>
+								<td id="4-1" onclick="setColor('4-1')"></td>
+								<td id="4-2" onclick="setColor('4-2')"></td>
+								<td id="4-3" onclick="setColor('4-3')"></td>
+								<td id="4-4" onclick="setColor('4-4')"></td>
+								<td id="4-5" onclick="setColor('4-5')"></td>
+								<td id="4-6" onclick="setColor('4-6')"></td>
+								<td id="4-7" onclick="setColor('4-7')"></td>
+								<td id="4-8" onclick="setColor('4-8')"></td>
+								<td id="4-9" onclick="setColor('4-9')"></td>
+							</tr>
+							<tr>
+								<td id="row5">5</td>
+								<td id="5-1" onclick="setColor('5-1')"></td>
+								<td id="5-2" onclick="setColor('5-2')"></td>
+								<td id="5-3" onclick="setColor('5-3')"></td>
+								<td id="5-4" onclick="setColor('5-4')"></td>
+								<td id="5-5" onclick="setColor('5-5')"></td>
+								<td id="5-6" onclick="setColor('5-6')"></td>
+								<td id="5-7" onclick="setColor('5-7')"></td>
+								<td id="5-8" onclick="setColor('5-8')"></td>
+								<td id="5-9" onclick="setColor('5-9')"></td>
+							</tr>
+							<tr>
+								<td id="row6">6</td>
+								<td id="6-1" onclick="setColor('6-1')"></td>
+								<td id="6-2" onclick="setColor('6-2')"></td>
+								<td id="6-3" onclick="setColor('6-3')"></td>
+								<td id="6-4" onclick="setColor('6-4')"></td>
+								<td id="6-5" onclick="setColor('6-5')"></td>
+								<td id="6-6" onclick="setColor('6-6')"></td>
+								<td id="6-7" onclick="setColor('6-7')"></td>
+								<td id="6-8" onclick="setColor('6-8')"></td>
+								<td id="6-9" onclick="setColor('6-9')"></td>
+							</tr>
+							<tr>
+								<td id="row7">7</td>
+								<td id="7-1" onclick="setColor('7-1')"></td>
+								<td id="7-2" onclick="setColor('7-2')"></td>
+								<td id="7-3" onclick="setColor('7-3')"></td>
+								<td id="7-4" onclick="setColor('7-4')"></td>
+								<td id="7-5" onclick="setColor('7-5')"></td>
+								<td id="7-6" onclick="setColor('7-6')"></td>
+								<td id="7-7" onclick="setColor('7-7')"></td>
+								<td id="7-8" onclick="setColor('7-8')"></td>
+								<td id="7-9" onclick="setColor('7-9')"></td>
+							</tr>
+							<tr>
+								<td id="row8">8</td>
+								<td id="8-1" onclick="setColor('8-1')"></td>
+								<td id="8-2" onclick="setColor('8-2')"></td>
+								<td id="8-3" onclick="setColor('8-3')"></td>
+								<td id="8-4" onclick="setColor('8-4')"></td>
+								<td id="8-5" onclick="setColor('8-5')"></td>
+								<td id="8-6" onclick="setColor('8-6')"></td>
+								<td id="8-7" onclick="setColor('8-7')"></td>
+								<td id="8-8" onclick="setColor('8-8')"></td>
+								<td id="8-9" onclick="setColor('8-9')"></td>
+							</tr>
+							<tr>
+								<td id="row9">9</td>
+								<td id="9-1" onclick="setColor('9-1')"></td>
+								<td id="9-2" onclick="setColor('9-2')"></td>
+								<td id="9-3" onclick="setColor('9-3')"></td>
+								<td id="9-4" onclick="setColor('9-4')"></td>
+								<td id="9-5" onclick="setColor('9-5')"></td>
+								<td id="9-6" onclick="setColor('9-6')"></td>
+								<td id="9-7" onclick="setColor('9-7')"></td>
+								<td id="9-8" onclick="setColor('9-8')"></td>
+								<td id="9-9" onclick="setColor('9-9')"></td>
+							</tr>
+							</table>
+						</div>
+					</div>
+
+						<div class="row" id="buttons">
+							<button class="btn btn-success" onclick="generateNewBoard('easy')">Easy</button>
+							<button class="btn btn-warning" onclick="generateNewBoard('medium')">Medium</button>
+							<button class="btn btn-danger" onclick="generateNewBoard('hard')">Hard</button>
+						</div>
+				</div>
+
 			</div>
 			<div class="row">
-				<div class="cell"></div>
-				<div class="cell">
-					<p id="rules">Rules: Complete the puzzle by filling in empty cells with colors from the palette. To solve the puzzle, each row and each column must have one cell of each of the nine colors in the palette. To set a cell's color, click the color you wish to set from the palette then click the cell you wish to set.</p>
+				<div class="col-xs-12 col-md-10 offset-md-1">
+						<p>Rules: Complete the puzzle by filling in empty cells with colors from the palette. To solve the puzzle, each row and each column must have one cell of each of the nine colors in the palette. To set a cell's color, click the color you wish to set from the palette then click the cell you wish to set.</p>
 				</div>
 			</div>
 		</div>
